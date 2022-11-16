@@ -3,7 +3,13 @@ const mongoose = require('mongoose')
 
 mongoose.connect("mongodb+srv://henryspivey:y4%25kdxDKrQDx%23%403@cluster0.ezqbz.mongodb.net/fcc-mongodb-and-mongoose?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true})
 
-let Person;
+let personSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
+  favoriteFoods: Array
+})
+
+let Person = mongoose.Model('Person',personSchema)
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
