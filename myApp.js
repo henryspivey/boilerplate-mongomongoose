@@ -30,9 +30,10 @@ const createManyPeople = (arrayOfPeople, done) => {
   
 };
 
-const findPeopleByName = (personName, done) => {
+const findPeopleByName = async (personName, done) => {
   try {
-    const data = Person.find(personName)
+    const data = await Person.find({personName})
+    console.log(data);
     return done(null, data)
   } catch (error) {
     return done(error)
