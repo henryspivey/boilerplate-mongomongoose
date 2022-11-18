@@ -52,7 +52,13 @@ const findOneByFood = async (food, done) => {
 };
 
 const findPersonById = (personId, done) => {
-  done(null /*, data*/);
+  try {
+    const data = Person.findById(personId)
+    if(data) console.log(data)
+    return done(null,data)
+  } catch (error) {
+    return done(error)
+  }
 };
 
 const findEditThenSave = (personId, done) => {
