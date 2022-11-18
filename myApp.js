@@ -41,10 +41,10 @@ const findPeopleByName = async (personName, done) => {
   
 };
 
-const findOneByFood = (food, done) => {
+const findOneByFood = async (food, done) => {
   try {
-    const data = await Person.findOne({food})
-    if (dat) console.log(data)
+    const data = await Person.findOne({favoriteFoods: food})
+    if (data) console.log(data)
     return done(null, data)
   } catch (error) {
     return done(error)
