@@ -73,7 +73,7 @@ const findEditThenSave = async (personId, done) => {
   })
 };
 
-const findAndUpdate = (personName, done) => {
+const findAndUpdate = async (personName, done) => {
   const ageToSet = 20;
   try {
     const filter = { name: personName };
