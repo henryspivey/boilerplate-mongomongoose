@@ -89,12 +89,10 @@ const findAndUpdate = async (personName, done) => {
 };
 
 const removeById = async (personId, done) => {
-  try {
-    const pers = Person.findByIdAndRemove(personId)
-    return done(null, pers)
-  } catch (error) {
-    return done(error)
-  }
+  Person.findByIdAndRemove(personId, function(err, data){
+    if(err) return console.error(error)
+    return done(null, data)
+  })
 };
 
 const removeManyPeople = (done) => {
