@@ -75,14 +75,16 @@ const findEditThenSave = async (personId, done) => {
 
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
-  Person.findOneAndUpdate(personName, function(err, pers){
-    if(err) return console.log(err)
-    pers.age = 20
-    pers.save(function(err, updatedPers) {
-      if(err) return console.error(err)
-      done(null, updatedPers)
-    })
-  }, {new:true})
+  try {
+    const filter = { name: personName };
+    const update = { age: ageToSet };
+
+    // `doc` is the document _before_ `update` was applied
+    let doc = await Person.findOneAndUpdate(filter, update, {new:true});
+    return done(null, doc)
+  } catch (error) {
+    return(error)
+  }
   
 };
 
