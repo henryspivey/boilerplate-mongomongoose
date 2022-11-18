@@ -106,7 +106,7 @@ const removeManyPeople = async (done) => {
 const queryChain = async (done) => {
   const foodToSearch = "burrito";
   await Person.find({favoriteFoods: foodToSearch})
-    .sort('asc').limit(2).select("-age").exec(function(err, data) {
+    .sort({name:'asc'}).limit(2).select("-age").exec(function(err, data) {
       if(err) return done(err)
       return done(null, data)
     })
