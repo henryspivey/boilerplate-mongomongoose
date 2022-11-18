@@ -97,7 +97,7 @@ const removeById = async (personId, done) => {
 
 const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
-  Person.remove({name: nameToRemove}, function(error, data) {
+  await Person.remove({name: nameToRemove}, function(error, data) {
     if (err) return console.error(error)
     return done(null, data)
   })
