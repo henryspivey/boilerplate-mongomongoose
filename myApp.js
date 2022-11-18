@@ -42,7 +42,13 @@ const findPeopleByName = async (personName, done) => {
 };
 
 const findOneByFood = (food, done) => {
-  done(null /*, data*/);
+  try {
+    const data = await Person.findOne({food})
+    if (dat) console.log(data)
+    return done(null, data)
+  } catch (error) {
+    return done(error)
+  }
 };
 
 const findPersonById = (personId, done) => {
